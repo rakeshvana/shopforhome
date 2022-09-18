@@ -1,0 +1,79 @@
+
+<div class="col-md-8 col-sm-6 col-lg-12 d-flex justify-content-between p-3">
+    <button class="btn btn-secondary mr-3" routerLink="../">Back</button>
+    <h3 class="font-weight-bold">MANAGE USERS</h3>
+    <button class="btn btn-secondary" routerLink="/admin-dashboard/mng-products/newuser">Create New User</button>
+</div>
+ 
+
+<table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Contact Number</th>
+        <th>Role</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Add coupon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{user.name}}</p>
+              <p class="text-muted mb-0">{{user.email}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{user.address}}</p>
+          
+        </td>
+        <td>{{user.contactNumber}}</td>
+        <td>
+          <span >{{user.role}}</span>
+        </td>
+        
+        <td>
+            <button class="btn btn-outline-warning" (click)="onUpdateUser(user.userId)">Edit</button>
+          
+        </td>
+            
+        <td>
+            <button class="btn btn-outline-danger" (click)="onDelete(user.userId)">Delete</button>
+        </td>
+
+        <td>
+          <form class="form-inline " (ngSubmit)="onAddCoupon(user.userId)" #f = "ngForm">
+            <div class="form-group mb-2">
+            
+              <input type="text" class="form-control" placeholder="Coupon Name" ngModel name="name" value="John">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="number" class="form-control"  placeholder="%" min="1" max="100" ngModel name="percentage">
+            </div>
+            <button type="submit" class="btn btn-outline-info mr-2 mb-2 " >Add Coupon</button>
+            <button  class="btn btn-outline-danger mb-2 " (click)="onDeleteCoupon(user.userId)">Delete Coupon</button>
+
+            
+          </form>
+        </td>
+
+      </tr>
+
+
+      
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+
+<div *ngIf="isLoading" style="text-align:center">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div class="container" *ngIf="!isLoading">
+    <div class="login">
+    <div class="title">LogIn</div>
+    <form (ngSubmit)="onLogin()" #f = "ngForm" >
+        
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input type="email"
+                placeholder="Enter your email "
+                name="email"
+                ngModel
+                required>
+            <!--<span style="color:#ccc" *ngIf="res==='Invalid Email'">Please enter valid email!</span>-->
+            </div>
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password"
+                placeholder="Enter your password "
+                name="password"
+                ngModel
+                required>
+            <!--<span style="color:#ccc" *ngIf="res==='Invalid Password'">Incorrect Password</span>-->
+           <span style="color:#ccc;display:block;text-align:center;" *ngIf="res==null">Invalid email or password</span>
+            </div>
+        </div>
+        <div class="button">
+            <input type="submit" value="Login">
+        </div>
+        <div class="input-box">
+            <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
+        </div>
+
+        
+
+    </form>
+</div>
+</div>

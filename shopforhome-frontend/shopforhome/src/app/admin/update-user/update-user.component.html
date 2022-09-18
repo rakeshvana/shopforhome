@@ -1,0 +1,71 @@
+
+<div class="container">
+    <div class="register">
+    <div class="title">Edit User</div>
+    <form (ngSubmit)="updateUser()" #f = "ngForm" >
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text"
+                    placeholder="Enter your name "
+                    name="name"
+                    
+                    [(ngModel)]="user.name">
+            </div>
+
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input type="email"
+                    placeholder="Enter your email "
+                    name="email"
+                   
+                    email
+                    #email="ngModel"
+                    [(ngModel)]="user.email"
+                    >
+            </div>
+
+            
+                <div class="input-box">
+                    <span class="details">Address</span>
+                    <input type="text"
+                        placeholder="Enter your address "
+                        name="address"
+                      
+                        [(ngModel)]="user.address">
+            </div>
+
+            
+                <div class="input-box">
+                    <span class="details">Contact Number</span>
+                    <input type="tel"
+                        placeholder="Enter your mobile number "
+                        name="contactNumber"
+                     
+                        [(ngModel)]="user.contactNumber">
+            </div>
+        
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password"
+                    placeholder="Enter your password "
+                    name="password"
+               
+                    [(ngModel)]="user.password">
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+
+            <div class="button">
+                <input class="p-2" type="submit" value="Update User">
+            </div>
+           
+        </div>
+        
+
+
+      
+    </form>
+</div>
+</div>

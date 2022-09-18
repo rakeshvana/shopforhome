@@ -1,0 +1,47 @@
+.example-card {
+    max-width: 320px;
+    min-width: 220px;
+  }
+  
+  img {  
+    width: 243px;
+    height: 389px;
+    object-fit: contain;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+
+    }  
+
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 4%;
+        flex: 1;
+    
+    }
+    .item{
+        margin: 6px;
+        padding-bottom: 2%;
+        margin-bottom: 2%;
+    }
+
+
+    span{
+        font-weight: bold;
+    }
+
+    .centre{
+        text-align: center;
+        margin: 2%;
+    }
+
+    .form-control{
+        margin-left: 7%;
+        width: 16%;
+        display:inherit;
+    }
+    .sortbtn{
+        margin-left: 2%;
+    }

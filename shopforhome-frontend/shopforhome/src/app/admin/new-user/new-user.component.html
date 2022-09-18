@@ -1,0 +1,67 @@
+
+<div class="container">
+    <div class="register">
+    <div class="title">New User </div>
+    <form (ngSubmit)="registerUser()" #f = "ngForm" >
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text"
+                    placeholder="Enter your name "
+                    name="name"
+                    required
+                    ngModel>
+            </div>
+
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input type="email"
+                    placeholder="Enter your email "
+                    name="email"
+                    required
+                    email
+                    #email="ngModel"
+                    ngModel
+                    >
+                <span style="color:#ccc" *ngIf="!email.valid && email.touched">Please enter valid email!</span>
+            </div>
+
+            
+                <div class="input-box">
+                    <span class="details">Address</span>
+                    <input type="text"
+                        placeholder="Enter your address "
+                        name="address"
+                        required
+                        ngModel>
+            </div>
+
+            
+                <div class="input-box">
+                    <span class="details">Contact Number</span>
+                    <input type="tel"
+                        placeholder="Enter your mobile number "
+                        name="contactNumber"
+                        required
+                        ngModel>
+            </div>
+        
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password"
+                    placeholder="Enter your password "
+                    name="password"
+                    required
+                    ngModel>
+            </div>
+        </div>
+        <div d-flex justify-content-between p-3>
+            <div class="button ">
+                <input type="submit" [disabled]="!f.valid" value="Add User">
+            </div>
+        </div>
+
+        
+    </form>
+</div>
+</div>

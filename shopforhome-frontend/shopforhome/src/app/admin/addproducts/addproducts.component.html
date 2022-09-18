@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="register">
+        <div class="title">Add Products</div>
+        <form #registerForm="ngForm" (submit)="addProduct(registerForm.value)">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Product Name</span>
+                    <input type="text" placeholder="Enter Product name " name="productName" required ngModel>
+                </div>
+                <div class="input-box">
+                    <label for="exampleFormControlSelect1">Category</label>
+                    <br>
+                    <select class="form-control" name="productCategory" id="exampleFormControlSelect1" required ngModel>
+                        <option></option>
+                        <option value="Table Decor">Table Decor</option>
+                        <option value="Wall Shelves & Cabinets">Wall Shelves & Cabinets</option>
+                        <option value="Wall Art">Wall Art</option>
+                        <option value="Kids Decor">Kids Decor</option>
+                        <option value="Home Garden">Home Garden</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Description</span>
+                    <input type="text" placeholder="Enter Description" name="productDescription" required ngModel>
+                </div>
+                <div class="input-box">
+                    <span class="details">Stocks Available</span>
+                    <input type="number" placeholder="Enter Available stocks " name="productStock" required ngModel>
+                </div>
+                <div class="input-box">
+                    <span class="details">Price</span>
+                    <input type="number" placeholder="Enter product price " name="productPrice" required ngModel>
+                </div>
+                <br>
+                <div>
+                    <span class="details">Product Image </span>
+                    <input type="file" name="productImage" required ngModel>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Submit</button>
+            <!-- <div class="button">
+                <input type="submit" [disabled]="!f.valid" value="Register">
+            </div> -->
+            <!-- <button class="button" type="submit" [disabled]="!f.valid">Register</button> -->
+            <!-- <button class="btn" (click)="savecred()">load data</button> -->
+        </form>
+    </div>
+</div>

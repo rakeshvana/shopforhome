@@ -1,0 +1,89 @@
+<div class="row my-auto" *ngIf="count==0">
+    <div class="col mx-auto">
+        <div class="card p-5 text-center shadow">
+            <h1>Your Cart Is Empty</h1>
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="row" *ngIf="count!=0 ">
+        
+        <div class="col-md-10 col-11 mx-auto" >
+            <h1 class="py-3 font-weight-bold">My Cart</h1>
+            <div class="row gx-3" >
+                <!--left side-->
+                <div class="col-md-12 col-lg-8 mx-auto ">
+
+                    <!--card-->
+                    <div class="card px-4 py-2 mb-1 shadow" *ngFor="let product of cartProducts">
+                        <div class="row">
+                            <div class="col-md-5 col-11  mx-auto bg-light d-flex
+                            justify-content-center align-items-center shadow "  >
+                                <img src="assets/images/{{product.product.productImage}}" alt="{{product.product.productImage}}" class="img-fluid" style=" min-width: 150px; max-height: 150px;">
+                            </div>
+
+                            <div class="col-md-7 col-11 mx-auto p-3 ">
+                                <!--product-details-->
+                                <div class="row">
+                                    <div class="col-6 card-title ">
+                                        <h3 class="mb-2 product_name">{{product.product.productName}}</h3>
+                                        <p class="mb-1">Regular price : {{product.product.productPrice}}</p>
+                                        <p class="mb-1">Category : {{product.product.productCategory}}</p>
+                                        
+                                    </div>
+                                    <!--qunatity increase decrease-->
+                                    <div class="col-6">
+                                        <ul class="pagination justify-content-end set_quantity">
+                                        <li class="page-item">
+                                        <button class="page-link " (click)="decreaseNumber(product)">
+                                        <i class="fas fa-minus"></i> </button>
+                                        </li>
+                                        <li class="page-item">
+                                            <input class="page-link" value="0" id="textbox" min="1" id="{{product.product.pid}}" [max]=product.product.productStock
+                                            [(ngModel)]="product.quantity"  size="5" type="number" required
+                                            name='count'style="width:60px; text-align:center" >
+                                        </li>
+                                        <li class="page-item">
+                                        <button class="page-link" (click)="increaseNumber(product)"> <i class="fas fa-plus"></i></button>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-11 d-flex justify-content-between">
+                                        <button class="btn btn-danger py-0" (click)="onRemove(product.product.pid)" routerLink="/cart">Remove Item</button>
+                                        <h2 #totalAmount>${{product.product.productPrice * product.quantity}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+
+                <!--right side-->
+                <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-4">
+
+                    <div class="p-3 shadow bg-white " *ngIf="coupon!=null">
+                        <h2 class="font-weight-bold">AVAIL {{coupon.percentage}}% OFF + FREE DELIVERY</h2>
+
+                        <div class="d-flex justify-content-between">
+                        <h2>COUPON CODE </h2>
+                        <h1 class="font-weight-bold">{{coupon.couponName}}</h1>
+                    </div>
+
+                    </div>
+
+                    
+                    <div class="p-3 shadow bg-white d-flex justify-content-between">      
+                        <button class="btn btn-primary text-uppercase" routerLink="order" (click)="onCheckOut()">Checkout</button>
+                        <!--<button class="btn btn-danger text-uppercase" routerLink="order" (click)="onCheckOut()">Empty Cart</button>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

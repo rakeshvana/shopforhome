@@ -1,0 +1,61 @@
+
+
+
+
+
+<div class="col-md-8 col-sm-6 col-lg-12 d-flex justify-content-between shadow-sm p-3 mb-5">
+    <button class="btn btn-secondary mr-3" routerLink="../">Back</button>
+    <h2 class="font-weight-bold">MANAGE PRODUCTS</h2>
+    <button class="btn btn-secondary" routerLink="/admin-dashboard/mng-products/addproduct">Add New Product</button>
+</div>
+
+<div class="row d-flex justify-content-between p-2 shadow-sm mb-2">
+    <div class="col-lg-8">
+        <h1>Bulk Upload Products:</h1>
+    </div>
+    <div class="col-lg-4">
+        <input type="file" (change)="selectFile($event)">
+        <button type="button" (click)="uploadFile()" class="btn btn-primary">Upload</button><br><br>
+    </div>
+</div>
+<h2 class="my-3">Available Products:</h2>
+    <table class="table table-bordered">
+        
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Category</th>
+                <th scope="col">Product Description</th>
+                <th scope="col">Product Stock</th>
+                <th scope="col">Product Price</th>
+                <th>Edit Product</th>
+                <th>Delete Product</th>
+                <th scope="col">Get Stocks</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <th scope="row">{{product.pid}}</th>
+                <td> <img mat-card-image src="assets/images/{{product.productImage}}"></td>
+                <td>{{product.productName}}</td>
+                <td>{{product.productCategory}}</td>
+                <td>{{product.productDescription}}</td>
+                <td>{{product.productStock}}</td>
+                <td>{{product.productPrice}}</td>
+                <td><button type="submit" (click)="updateProduct(product.pid)" routerLink="active"
+                        class="btn btn-outline-primary">UPDATE</button></td>
+                <!-- <td><button type="submit" (click)="deleteProduct(product.pid)" class="btn btn-primary">DELETE</button></td> -->
+                <td><button class="btn btn-outline-danger ml-2" (click)="deleteProduct(product.pid)"
+                        aria-label="Example icon-button with heart icon">
+                        <mat-icon>delete</mat-icon>
+                    </button></td>
+
+                    <td><button routerLink="admin-dashboard/mng-products/getstocks" type="submit" [disabled]="product.productStock>=10" (click)="sendEmail(product.pid)"
+                        class="btn btn-outline-success">Email</button></td>
+            </tr>
+        </tbody>
+    </table>
+

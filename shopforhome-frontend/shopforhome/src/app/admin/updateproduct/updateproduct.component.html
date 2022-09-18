@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="register">
+        <div class="title">Update Products</div>
+        <form #registerForm="ngForm" (submit)="updateProduct(registerForm.value)">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Product Name</span>
+                    <input type="text" placeholder="Enter Product name " [(ngModel)]="product.productName"
+                        name="productName" required ngModel>
+                </div>
+                <div class="input-box">
+                    <label for="exampleFormControlSelect1">Category</label>
+                    <br>
+                    <select class="form-control" name="productCategory" [(ngModel)]="product.productCategory"
+                        id="exampleFormControlSelect1" required ngModel>
+                        <option></option>
+                        <option value="Table Decor">Table Decor</option>
+                        <option value="Wall Shelves & Cabinets">Wall Shelves & Cabinets</option>
+                        <option value="Wall Art">Wall Art</option>
+                        <option value="Kids Decor">Kids Decor</option>
+                        <option value="Home Garden">Home Garden</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details">Description</span>
+                    <input type="text" [(ngModel)]="product.productDescription" placeholder="Enter Description"
+                        name="productDescription" required ngModel>
+                </div>
+                <div class="input-box">
+                    <span class="details">Stocks Available</span>
+                    <input type="number" [(ngModel)]="product.productStock" placeholder="Enter Available stocks "
+                        name="productStock" required ngModel>
+                </div>
+                <div class="input-box">
+                    <span class="details">Price</span>
+                    <input type="number" [(ngModel)]="product.productPrice" placeholder="Enter product price "
+                        name="productPrice" required ngModel>
+                </div>
+                <br>
+                <div>
+                    <span class="details">Product Image </span>
+                    <!-- <img mat-card-image src="assets/images/{{product.productImage}}"> -->
+                    <img mat-card-image [src]="url">
+                    <input type="hidden" [(ngModel)]="product.productImage" name="productImages" ngModel>
+                    <input type="file" value="product.productImage" name="productImage" (change)="onselected($event)"
+                        ngModel>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>

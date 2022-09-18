@@ -1,0 +1,39 @@
+<button (click)="filter('')" mat-button>All Products</button>
+<button (click)="filter('Table Decor')" mat-button>Table Decor</button>
+<button (click)="filter('Wall Shelves & Cabinets')" mat-button>Wall Shelves & Cabinets</button>
+<button (click)="filter('Wall Art')" mat-button>Wall Art</button>
+<button (click)="filter('Kids Decor')" mat-button>Kids Decor</button>
+<button (click)="filter('Home Garden')" mat-button>Home Garden</button>
+<br><br>
+
+<!-- <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)"
+        placeholder="search products">
+</div> -->
+<input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+<button (click)="sort('productPrice')" class="sortbtn" mat-raised-button color="primary">Sort By Price</button>
+<br><br>
+<div class="container">
+    <div *ngFor="let product of filterCategory | filter:searchKey:'productName'| sort:[params,'asc']" class="item">
+        <mat-card class="example-card">
+            <img mat-card-image src="assets/images/{{product.productImage}}">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{product.productName}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <span>Category: </span>{{product.productCategory}}
+                <br>
+                <span>Description: </span>{{product.productDescription}}
+                <br>
+                <span>Stock: </span>{{product.productStock}}
+                <br>
+                <span>Price:$ </span>{{product.productPrice}}
+            </mat-card-content>
+            <mat-card-actions>
+                <button class="btn btn-success" (click)="onAddToWishlist(product.pid)">Add to WishList</button>
+                <button class="btn btn-primary" mat-button (click)="onAddToCart(product.pid)">Add to Cart</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
